@@ -1,0 +1,41 @@
+#+TITLE: odoo.el
+
+A collection of stubs for ideas I'm going to flesh out for dealing with the
+Odoo codebase from Emacs. At least some of them. I hope.
+
+#+BEGIN_SRC elisp
+  ;; Example setup
+  (add-to-list 'load-path path-to-this-repo)
+  (require 'odoo)
+  (setopt odoo-executable-path (expand-file-name "~/repos/odoo/odoo-bin")
+          odoo-executable-args '("-i" "stock,purchase" "--with-demo"))
+  ;; Then run `odoo-start' and `odoo-stop'.
+#+END_SRC
+
+* Features (v0.1)
+  - [-] =imenu= (and =which-function-mode=) support (works out of the box with
+        Python code)
+    - [-] For JS tours
+      - [X] Indexing tours themselves
+      - [ ] Indexing tour steps for quickly jumping
+    - [ ] For frontend JS
+  - [ ] =project.el= or Projectile support?
+  - [-] Inferior process to spawn and control Odoo server from Emacs
+    - [ ] Dwimmery for automagically guessing which tests to run on point
+          (and what modules they require)
+    - [-] ANSI colour output
+    - [-] Better integration with =compilation-mode= for smart error
+          message handling
+       - [ ] And a keymap for the major-mode
+    - [ ] Clickable hyperlinks for jumping straight to error lines and
+          failing tests
+    - [ ] Maybe some Python hooks to facilitate this? But the low-level API
+          isn't very stable.
+    - [ ] Maybe rudimentary Postgres integration
+  - [ ] Inheritance-aware smarter metapoint xref jumping, eldoc and
+        completion-at-point
+  - [ ] Smart, XPath-based XML search (Until then, [[https://gist.github.com/lugr-odoo/35f7fe383dceb9a45cb20085de7ec592][see my other tool]].)
+  - [ ] Miscellaneous tools for reaching under the hood into =ir.model.*= for
+        stuff like looking up security access (hopefully by making use of
+        existing tools in the monorepo without reinventing the wheel)
+  - [ ] Maybe per-module linting integration to suit each team's taste? I dunno.
