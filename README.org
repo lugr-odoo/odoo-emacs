@@ -1,4 +1,5 @@
 #+TITLE: odoo.el
+# Time-stamp: <2026-06-11 14:23:26 odoo>
 
 A collection of stubs for ideas I'm going to flesh out for dealing with the
 Odoo codebase from Emacs. At least some of them. I hope.
@@ -12,30 +13,45 @@ Odoo codebase from Emacs. At least some of them. I hope.
   ;; Then run `odoo-start' and `odoo-stop'.
 #+END_SRC
 
-* Features (v0.1)
-  - [-] =imenu= (and =which-function-mode=) support (works out of the box with
-        Python code)
+* Features (v0.1) & Roadmap
+  1. [-] =imenu= (and =which-function-mode=[fn:1]) support (works out of the
+         box with Python code)
     - [-] For JS tours
       - [X] Indexing tours themselves
       - [ ] Indexing tour steps for quickly jumping
     - [ ] For frontend JS
-  - [ ] =project.el= or Projectile support?
-  - [-] Inferior process to spawn and control Odoo server from Emacs
-    - [ ] Dwimmery for automagically guessing which tests to run on point
-          (and what modules they require)
-    - [-] ANSI colour output
-    - [-] Better integration with =compilation-mode= for smart error
-          message handling
-       - [ ] And a keymap for the major-mode
-    - [ ] Clickable hyperlinks for jumping straight to error lines and
-          failing tests
-    - [ ] Maybe some Python hooks to facilitate this? But the low-level API
-          isn't very stable.
-    - [ ] Maybe rudimentary Postgres integration
-  - [ ] Inheritance-aware smarter metapoint xref jumping, eldoc and
-        completion-at-point
-  - [ ] Smart, XPath-based XML search (Until then, [[https://gist.github.com/lugr-odoo/35f7fe383dceb9a45cb20085de7ec592][see my other tool]].)
-  - [ ] Miscellaneous tools for reaching under the hood into =ir.model.*= for
-        stuff like looking up security access (hopefully by making use of
-        existing tools in the monorepo without reinventing the wheel)
-  - [ ] Maybe per-module linting integration to suit each team's taste? I dunno.
+  2. [-] Inferior process to spawn and control Odoo server from Emacs
+    - [ ] Dwimmery for automagically guessing which tests to run on point (or
+          imenu index -- qv see above) and what modules they require inferred
+          from the parent directory name
+    - [-] ANSI colour output (broken until I figure out how to properly attach
+          =ansi-color-compilation-filter=[fn:1])
+    - [-] Better integration with =compilation-mode= for smart error message
+          handling
+       - [ ] And a keymap for the buffer major-mode
+       - [ ] Clickable hyperlinks for jumping straight to error lines and
+             failing tests
+  3. [ ] Snippets and templates
+
+* Possible niceties?
+  - =project.el= or Projectile support?
+  - Inheritance-aware smarter metapoint xref jumping, eldoc and
+    completion-at-point
+  - Smart, XPath-based XML search (Until then, [[https://gist.github.com/lugr-odoo/35f7fe383dceb9a45cb20085de7ec592][see my other tool]].)
+  - Miscellaneous tools for reaching under the hood into =ir.model.*= for stuff
+    like looking up security access (hopefully by making use ofexisting tools in
+    the monorepo without reinventing the wheel)
+  - Maybe per-module linting integration to suit each team's taste? I dunno.
+  - Maybe some Python hooks to facilitate this? But the low-level API isn't very
+    stable.
+  - Maybe rudimentary Postgres integration
+
+
+[fn:1] My version of Emacs (v29.3) might be too old for this, at least until the
+Ubuntu 26.04 LTS upgrade rolls around this August.
+
+-----
+
+(Why does GitHub's org renderer suck? It's been like this for years now. It's
+like nobody's even touched it since it was first implemented. Get a grip, buddy;
+not everyone wants to use Markdown.)
